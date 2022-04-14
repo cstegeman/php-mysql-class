@@ -157,11 +157,14 @@ class DBconnection
     }
 
     /**
-     * @param string $value
-     * @return string
+     * @param mixed $value
+     * @return string|null
      */
-    public function CleanValue(string $value = '')
+    public function CleanValue($value)
     {
+        if (is_null($value)) {
+            return null;
+        }
         return mysqli_real_escape_string($this->connection, $value);
     }
 
